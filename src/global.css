@@ -1,0 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+
+body, html {
+  font: 0 1em system-ui, -apple-system, Helvetica, sans-serif;
+}
