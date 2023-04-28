@@ -10,7 +10,6 @@ const isTypeEquals = (param1 : any, param2 : any) : boolean => {
 
 // custo hook que faz todo processo de validação da requisição usando o objeto do js fetch
 export const useFetch : UseFetchHook = <ResultType,>(url : string, options : object) => {
-
     // cria states para armazenar os valores do resultado e do loaging
     const [result, setResult] = useState<ResultType>(null as ResultType)
     const [loading, setLoading] = useState(false)
@@ -61,6 +60,7 @@ export const useFetch : UseFetchHook = <ResultType,>(url : string, options : obj
         // função assincrona que faz a requisição com o url solicitado, e 
         // com o header(options) solicitado
         const fetchData = async() => {
+            await new Promise( r => setTimeout(r, 1000))
             try {
                 //response retorna o body da pagina da requisição
                 const response = await fetch(urlRef.current, {...optionsRef.current, signal}) //injeta o sinal
@@ -77,13 +77,11 @@ export const useFetch : UseFetchHook = <ResultType,>(url : string, options : obj
             } catch (e) {
                 //caso de erro, loading sera false e o resultado da requisição sera nulo
                 setLoading(false)
-                console.log(`%c${e}`, 'color: #ce4848 ')
                 
             }
         }
         //efetua o fetch
         fetchData()
-
         // se o component for desmontado no meio do processo,
         // e a requisição não for abortada, ocorrera um erro,
         // entao como um 'sinal' foi injetado no header, e o
