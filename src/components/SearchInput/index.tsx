@@ -21,10 +21,12 @@ export const SearchInput : Component = () => {
     }
 
     return (
-        <input 
-            type="search" 
-            value={searchValue} 
-            onChange={handleType} 
-        />
+        <div className="search-input">
+            <input 
+                type="search" 
+                value={searchValue} 
+                onChange={handleType} 
+            />
+       </div>
     )
 }

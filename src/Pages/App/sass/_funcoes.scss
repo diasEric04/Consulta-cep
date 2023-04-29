@@ -1,0 +1,3 @@
+@function calc_coluna($num,$total: 12) {
+    @return percentage(calc($num / $total))
+}

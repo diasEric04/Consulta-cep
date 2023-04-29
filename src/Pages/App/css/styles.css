@@ -1,5 +1,63 @@
-div {
-  color: red;
+.w-12, form.search-form div.search-button button, form.search-form div.search-input input {
+  width: 100%;
+}
+
+.w-11 {
+  width: 91.6666666667%;
+}
+
+.w-10 {
+  width: 83.3333333333%;
+}
+
+.w-9 {
+  width: 75%;
+}
+
+.w-8 {
+  width: 66.6666666667%;
+}
+
+.w-7 {
+  width: 58.3333333333%;
+}
+
+.w-6 {
+  width: 50%;
+}
+
+.w-5 {
+  width: 41.6666666667%;
+}
+
+.w-4, form.search-form div.search-input {
+  width: 33.3333333333%;
+}
+
+.w-3 {
+  width: 25%;
+}
+
+.w-2, form.search-form div.search-button {
+  width: 16.6666666667%;
+}
+
+.w-1 {
+  width: 8.3333333333%;
+}
+
+form.search-form {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+form.search-form div.search-input input {
+  height: 50px;
+  font-size: 36px;
+}
+form.search-form div.search-button button {
+  height: 50px;
+  font-size: 26px;
 }
 
 /*# sourceMappingURL=styles.css.map */

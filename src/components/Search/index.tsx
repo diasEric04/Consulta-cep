@@ -5,7 +5,7 @@ import { SearchInput } from "../SearchInput";
 
 export const Search : Component = () => {
     return ( //ValueContext
-        <form action="">
+        <form className="search-form">
             <SearchInput />
             <SearchButton />
         </form>

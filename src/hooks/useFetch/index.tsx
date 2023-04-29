@@ -62,6 +62,9 @@ export const useFetch : UseFetchHook = <ResultType,>(url : string, options : obj
         // função assincrona que faz a requisição com o url solicitado, e 
         // com o header(options) solicitado
         const fetchData = async() => {
+            //cria uma promesa que espera 1 segundo para executar o fetch, assim simulando uma conexao lenta para 
+            //testar e mostrar um pouco mais da animação de loading
+            await new Promise(r => setTimeout(r, 1000))
             try {
                 //response retorna o body da pagina da requisição
                 const response = await fetch(urlRef.current, {...optionsRef.current, signal}) //injeta o sinal

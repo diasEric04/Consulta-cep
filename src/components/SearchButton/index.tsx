@@ -17,11 +17,10 @@ export const SearchButton : Component = () => {
     }
 
     return (
-        <button 
-            type="button" 
-            onClick={() => handleClick()}
-        >
-            Procurar
-        </button>
+        <div className="search-button">
+             <button type="button" onClick={() => handleClick()}>
+                Procurar
+            </button>
+        </div>
     )
 }

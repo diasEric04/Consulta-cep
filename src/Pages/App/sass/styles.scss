@@ -1,0 +1,33 @@
+@import 'variaveis';
+@import 'funcoes';
+
+//clone col-{numero} do bootstrap
+@for $i from 12 through 1 {
+    .w-#{$i} {
+        width: calc_coluna($i);
+    }
+}
+
+form.search-form {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+
+    div.search-input {
+        @extend .w-4;
+        input {
+            @extend .w-12;
+            height: 50px;
+            font-size: 36px;
+        }
+    }
+
+    div.search-button {
+        @extend .w-2;
+        button {
+            @extend .w-12;
+            height: 50px;
+            font-size: 26px;
+        }
+    }
+}
