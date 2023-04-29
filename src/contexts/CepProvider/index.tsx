@@ -1,20 +1,19 @@
-//react imports
-import { useReducer } from 'react'
-//tipos imports
-import { CepProviderType } from "./typing";
-//dados imports
-import { CepContext } from "./context";
-import { reducer } from './reducer';
-import { initialState } from './data';
+import { initialState } from "./data";
+import { CepContext } from './context'
+import {reducer} from './reducer'
 
-const CepProvider : CepProviderType = ({children}) => {
+import { CepContextType } from "./typing";
+import { useReducer } from "react";
+
+const CepProvider : CepContextType = ({children}) => {
     const [cepState, cepDispatch] = useReducer(reducer, initialState)
     return (
-        <CepContext.Provider value={{cepState, cepDispatch}}>
+        <CepContext.Provider value={{cepState, cepDispatch}}> 
             {children}
         </CepContext.Provider>
     )
 }
 
 export default CepProvider
+
 export {CepContext}

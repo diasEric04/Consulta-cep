@@ -10,10 +10,12 @@ const isTypeEquals = (param1 : any, param2 : any) : boolean => {
 
 // custo hook que faz todo processo de validação da requisição usando o objeto do js fetch
 export const useFetch : UseFetchHook = <ResultType,>(url : string, options : object) => {
+    
     // cria states para armazenar os valores do resultado e do loaging
     const [result, setResult] = useState<ResultType>(null as ResultType)
     const [loading, setLoading] = useState(false)
 
+    
     // shouldLoad tem o papel de informar quando deve ser feita uma nova requisição, 
     // que seria quando o 'current' de qualquer ref, tanto url, tanto options, muda.
 
@@ -60,7 +62,6 @@ export const useFetch : UseFetchHook = <ResultType,>(url : string, options : obj
         // função assincrona que faz a requisição com o url solicitado, e 
         // com o header(options) solicitado
         const fetchData = async() => {
-            await new Promise( r => setTimeout(r, 1000))
             try {
                 //response retorna o body da pagina da requisição
                 const response = await fetch(urlRef.current, {...optionsRef.current, signal}) //injeta o sinal

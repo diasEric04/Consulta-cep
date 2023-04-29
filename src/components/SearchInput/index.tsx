@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useContext} from 'react'
 
 import { Component, HandleType } from "../typing";
+import { SearchContext } from '../../contexts/SearchProvider';
+import { setSearchValue } from '../../contexts/SearchProvider/actions';
 
 export const SearchInput : Component = () => {
     
-    const [value, setValue] = useState('')
+    const {searchState : {searchValue} ,searchDispatch} = useContext(SearchContext)
 
     const handleType : HandleType = (event : {target : {value : string}}) => {
         let formatedValue = event.target.value
@@ -15,13 +17,13 @@ export const SearchInput : Component = () => {
         } catch {
             formatedValue = formatedValue.substring(0, formatedValue.length - 1)
         }
-        setValue(formatedValue)
+        setSearchValue(searchDispatch, formatedValue)
     }
 
     return (
         <input 
             type="search" 
-            value={value} 
+            value={searchValue} 
             onChange={handleType} 
         />
     )

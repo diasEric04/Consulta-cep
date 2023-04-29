@@ -1,1 +1,3 @@
-export {}
+const SEARCH_CEP = 'SEARCH_CEP'
+
+export {SEARCH_CEP}

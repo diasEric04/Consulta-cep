@@ -1,8 +1,7 @@
 import { ReactNode, ReactElement } from "react"
 
 interface StateType {
-    canSearch : boolean,
-    cep : string
+    searchValue : string,
 }
 
 interface ActionType {
@@ -10,8 +9,8 @@ interface ActionType {
     payload? : any
 }
 interface ContextType {
-    cepState :  StateType
-    cepDispatch : DispatchType
+    searchState :  StateType
+    searchDispatch : DispatchType
 }
 
 type DispatchType = React.Dispatch<ActionType>
