@@ -5,6 +5,10 @@ import { search } from "../../contexts/CepProvider/actions";
 import { CepContext } from "../../contexts/CepProvider";
 import { setSearchValue } from "../../contexts/SearchProvider/actions";
 
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 export const SearchButton : Component = () => {
     const {searchState : {searchValue}, searchDispatch} = useContext(SearchContext)
     const {cepDispatch} = useContext(CepContext)
@@ -19,7 +23,7 @@ export const SearchButton : Component = () => {
     return (
         <div className="search-button">
              <button type="button" onClick={() => handleClick()}>
-                Procurar
+                <FontAwesomeIcon icon={faMagnifyingGlass} /> Procurar
             </button>
         </div>
     )
