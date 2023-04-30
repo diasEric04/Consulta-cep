@@ -11,14 +11,16 @@ type Component = () => ReactElement
 
 //address data
 interface CepDataType {
+    [key : string] : string | boolean
     cep : string, 
     logradouro : string,
     complemento : string,
     bairro : string,
     localidade : string,
     uf : string,
-    ddd : string
-    erro?: boolean
+    ddd : string,
+    erro: boolean
+    loading : boolean
 }
 
 type AddressDataType = (props : { result : CepDataType }) => ReactElement

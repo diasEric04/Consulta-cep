@@ -23,7 +23,7 @@ export const SearchInput : Component = () => {
     return (
         <div className="search-input">
             <input 
-                type="search" 
+                type="text" 
                 value={searchValue} 
                 onChange={handleType} 
             />

@@ -15,7 +15,7 @@ export const Address : Component = () => {
             result && !result?.erro ? (  
                 <AddressData result={result}/> //success
             ) : (
-                <AddressData result={{} as CepDataType} />  //erro
+                <AddressData result={{erro : true} as CepDataType} />  //erro
             )
         )
     } else if (!loading) {
@@ -24,6 +24,5 @@ export const Address : Component = () => {
         )
     }
 
-
-    return <p>loading...</p> //loading
+    return <AddressData result={{loading : true} as CepDataType} /> //loading
 }

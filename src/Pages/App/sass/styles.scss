@@ -8,26 +8,100 @@
     }
 }
 
-form.search-form {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-
-    div.search-input {
-        @extend .w-4;
-        input {
-            @extend .w-12;
-            height: 50px;
-            font-size: 36px;
+div#root {
+    form.search-form {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    
+        div.search-input {
+            @extend .w-4;
+            input {
+                @extend .w-12;
+                height: 44px;
+                font-size: 36px;
+            }
+        }
+    
+        div.search-button {
+            @extend .w-2;
+            button {
+                @extend .w-12;
+                margin-left: 8px;
+                height: 50px;
+                font-size: 26px;
+            }
         }
     }
+    
+    div.address-data {
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
-    div.search-button {
-        @extend .w-2;
-        button {
-            @extend .w-12;
-            height: 50px;
-            font-size: 26px;
+        div {
+            @extend .w-7;
+            margin: 5px 0;
+            display: flex;
+
+            input:disabled {
+                background: #fff;
+            }
+
+            input{
+                border: 1px solid #000;
+                color: #000;
+                padding: 0 0 0 20px;
+                font-size: 20px;
+                height: 40px;
+                @extend .w-11;
+
+                &.input-default {
+                    color: #b1b1b1;
+                }
+            }
+
+            i {
+                border: 1px solid #000;
+                padding: 0;
+                line-height: 40px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                font-size: 30px;
+                color: #fff;
+                
+
+                &.error {     
+                    background: #fd6c6c;
+                }
+
+                &.success {
+                    background: #71e071;
+                }
+
+                &.no-value {
+                    background: #4949be;
+                }
+
+                &.loading {
+                    background-color: #f0d333;
+                    span.loading {
+                        display: block;
+                        animation: rotate 1s ease-out infinite;
+                        @keyframes rotate {
+                            from {
+                                transform: rotate(0deg);
+                            }
+
+                            to {
+                                transform: rotate(360deg);
+                            }
+                        }  
+                    }
+                }
+            }
         }
     }
 }
