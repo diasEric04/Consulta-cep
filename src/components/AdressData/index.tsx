@@ -1,4 +1,4 @@
-import { AddressDataType } from "../typing";
+import { AddressDataType, ResultArrayType } from "../typing";
 
 import { useEffect, useState, useContext } from "react";
 import { CepContext } from "../../contexts/CepProvider";
@@ -23,7 +23,7 @@ export const AddressData : AddressDataType = ({ result }) => {
     const error = result?.erro
     const loading = result?.loading
 
-    const resultArray : [number, string[]][] = [
+    const resultArray : ResultArrayType = [
         [1, ['cep', result?.cep]],
         [2, ['estado', result?.uf]],
         [3, ['cidade', result?.localidade]],

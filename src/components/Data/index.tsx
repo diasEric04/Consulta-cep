@@ -1,4 +1,4 @@
-import { DataComponent, HandleBtnClickType } from "../typing";
+import { DataComponent, HandleBtnClickType, AuxiliarFunctionType, SetIconType, SetClassType, SetValueType } from "../typing";
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCheck, faInfo, faRotate, faSquareCaretUp, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -7,8 +7,7 @@ import { useState, useRef, useEffect} from 'react'
 import $ from 'jquery'
 
 export const Data : DataComponent = ({props : { dados : [index, valor], error, noValue, loading}}) => { 
-    
-    
+
     const windowWidthRef = useRef<number | undefined>(0)
     const windowRef = useRef<Window>(window)
 
@@ -33,39 +32,46 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
         }
     }
 
-    const setIcon = () => {
+    const setIcon : SetIconType = () => {
         return loading ? faRotate : valor ? faCheck : error ? faXmark : faInfo 
     }
     
-    const setClassName = () => {
+    const setClassName : SetClassType = () => {
         return loading ? 'loading' : valor ? 'success' : error ? 'error' : 'no-value' 
     }
 
-    const setInputNumCharFn = () => {
+    const setValue : SetValueType = (value) => {
+        if (value.length > inputNumChar) {
+            return  value.substring(0, inputNumChar).trim() + '...'
+        }
+        return value
+    }
+
+    const setInputNumCharFn : AuxiliarFunctionType = () => {
         const pixeisPorLetra = windowWidthRef.current && windowWidthRef.current > 680 ? 15 : windowWidthRef.current && windowWidthRef.current > 430 ? 12 : 10
         const widthInput = $('div.data:first').find('input').innerWidth() ?? 0
         const inputMaxChar = Math.floor(widthInput / pixeisPorLetra)
         setInputNumChar(inputMaxChar)
     }
 
-    const setWidthIFD = () => {
+    const setWidthIFD : AuxiliarFunctionType = () => {
         const widthI = $('div.data:first i:first').innerWidth() ?? 0
         $('i.full-data-item').css('width', widthI)
     }
 
-    const setWidthSpanFD = () => {
+    const setWidthSpanFD : AuxiliarFunctionType = () => {
         const widthInput = $('div.data:first').find('input').innerWidth() ?? 0
         $('span.full-data-item').css('width', widthInput)
     }
 
-    const setWidthDivFD = () => {
+    const setWidthDivFD : AuxiliarFunctionType = () => {
         const widthDiv = $('div.data:first').innerWidth() ?? 0
         const widthButton = $('div.data:first').find('button').innerWidth() ?? 0
         const width  = widthDiv - widthButton - 4
         $('div.full-data').css('width', `${width}px`)
     }
 
-    const controlActiveClassName = () => {
+    const controlActiveClassName : AuxiliarFunctionType = () => {
         $('div.full-data').each(function () {
             if ($(this).has('active')) {
                 $('div.full-data').removeClass('active')
@@ -105,13 +111,6 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
 
     const insertButton = (value : string) =>  value && value.length > inputNumChar
 
-    const setValue = (value : string) => {
-        if (value.length > inputNumChar) {
-            return  value.substring(0, inputNumChar).trim() + '...'
-        }
-        return value
-    }
-
     const valueFirstUC = index[0].toUpperCase()+index.substring(1)
     const valueWithPrefix = `${index}: ${valor}`
 
@@ -121,6 +120,7 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
     return( 
         <>
         {success ? (
+            //==succes==//
             <div className="data">
                 <i className={setClassName()}>
                     <span><FontAwesomeIcon icon={setIcon()} /></span>
@@ -143,6 +143,7 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
                 </div>
             </div>
         ) : (
+            //==error==//
             <div className="data">
                 <i className={setClassName()}>
                     <span className={loading ? 'loading' : ''}><FontAwesomeIcon icon={setIcon()} /></span>

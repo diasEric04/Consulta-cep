@@ -1,3 +1,4 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { ReactElement } from 'react'
 
 //search button
@@ -27,4 +28,12 @@ interface CepDataType {
 type AddressDataType = (props : { result : CepDataType }) => ReactElement
 type HandleBtnClickType = ( event : React.MouseEvent<HTMLButtonElement>) => void
 type DataComponent = (props : { props : {dados : string[], noValue : boolean, error : boolean, loading : boolean}}) => ReactElement
-export type { Component, HandleType, HandleClick, CepDataType, AddressDataType, HandleBtnClickType, DataComponent }
+type ResultArrayType = [number, string[]][]
+type AuxiliarFunctionType = () => void
+type SetClassType = () => string
+type SetIconType = () => IconDefinition
+type SetValueType = (value : string) => string
+
+
+export type { Component, HandleType, HandleClick, CepDataType, AddressDataType, HandleBtnClickType, DataComponent, 
+              ResultArrayType, AuxiliarFunctionType, SetClassType, SetIconType, SetValueType }
