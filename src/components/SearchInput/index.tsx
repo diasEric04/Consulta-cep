@@ -23,7 +23,7 @@ export const SearchInput : Component = () => {
     return (
         <div className="search-input">
             <input 
-                type="text" 
+                type="search" 
                 value={searchValue} 
                 onChange={handleType} 
                 placeholder='CEP, Ex: 12345678'

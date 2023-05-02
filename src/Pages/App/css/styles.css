@@ -73,6 +73,7 @@ div#root div.app header nav ul li.active {
 }
 @media (max-width: 860px) {
   div#root div.app header nav {
+    opacity: 0;
     position: absolute;
     background: #1d1d1d;
     left: 0;
@@ -80,8 +81,8 @@ div#root div.app header nav ul li.active {
     width: 40vw;
     height: 92vh;
     transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
-    animation: hide 0.31s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    animation: hide 0.35s ease-out;
   }
   @keyframes hide {
     0% {
@@ -107,6 +108,7 @@ div#root div.app header nav ul li.active {
     font-size: 20px;
   }
   div#root div.app header nav.active {
+    opacity: 1;
     transform: translate(0);
   }
 }
@@ -132,7 +134,7 @@ div#root div.app main form.search-form div.search-input {
 }
 div#root div.app main form.search-form div.search-input input {
   width: 100%;
-  height: 46px;
+  height: 50px;
   font-size: 30px;
   border: 2px solid #000;
   border-right: none;
@@ -142,10 +144,19 @@ div#root div.app main form.search-form div.search-input input {
     width: 70%;
   }
 }
+@media (max-width: 680px) {
+  div#root div.app main form.search-form div.search-input {
+    width: 60%;
+  }
+  div#root div.app main form.search-form div.search-input input {
+    font-size: 16px;
+  }
+}
 div#root div.app main form.search-form div.search-button {
   width: 20%;
 }
 div#root div.app main form.search-form div.search-button button {
+  cursor: pointer;
   width: 100%;
   height: 50px;
   font-size: 20px;
@@ -162,21 +173,27 @@ div#root div.app main form.search-form div.search-button button:hover {
     width: 25%;
   }
 }
+@media (max-width: 430px) {
+  div#root div.app main form.search-form div.search-button {
+    width: 35%;
+  }
+  div#root div.app main form.search-form div.search-button button {
+    font-size: 16px;
+  }
+}
 div#root div.app main div.address-data {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-div#root div.app main div.address-data div {
+div#root div.app main div.address-data div.data {
   width: 60%;
   margin: 5px 0;
   display: flex;
 }
-div#root div.app main div.address-data div input:disabled {
+div#root div.app main div.address-data div.data input {
   background: #fff;
-}
-div#root div.app main div.address-data div input {
   border: 1px solid #000;
   color: #000;
   padding: 0 0 0 20px;
@@ -184,12 +201,11 @@ div#root div.app main div.address-data div input {
   height: 60px;
   width: 100%;
 }
-div#root div.app main div.address-data div input.input-default {
+div#root div.app main div.address-data div.data input.input-default {
   color: #b1b1b1;
 }
-div#root div.app main div.address-data div i {
+div#root div.app main div.address-data div.data i {
   border: 1px solid #000;
-  padding: 0;
   line-height: 60px;
   width: 60px;
   height: 60px;
@@ -197,19 +213,19 @@ div#root div.app main div.address-data div i {
   font-size: 30px;
   color: #fff;
 }
-div#root div.app main div.address-data div i.error {
+div#root div.app main div.address-data div.data i.error {
   background: #fd6c6c;
 }
-div#root div.app main div.address-data div i.success {
+div#root div.app main div.address-data div.data i.success {
   background: #71e071;
 }
-div#root div.app main div.address-data div i.no-value {
+div#root div.app main div.address-data div.data i.no-value {
   background: #4949be;
 }
-div#root div.app main div.address-data div i.loading {
+div#root div.app main div.address-data div.data i.loading {
   background-color: #f0d333;
 }
-div#root div.app main div.address-data div i.loading span.loading {
+div#root div.app main div.address-data div.data i.loading span.loading {
   display: block;
   animation: rotate 1s ease-out infinite;
 }
@@ -222,28 +238,233 @@ div#root div.app main div.address-data div i.loading span.loading {
   }
 }
 @media (max-width: 680px) {
-  div#root div.app main div.address-data div {
+  div#root div.app main div.address-data div.data {
     width: 80%;
   }
-  div#root div.app main div.address-data div i {
+  div#root div.app main div.address-data div.data i {
     height: 50px;
+    width: 50px;
     line-height: 50px;
   }
-  div#root div.app main div.address-data div input {
+  div#root div.app main div.address-data div.data input {
     font-size: 21px;
     height: 50px;
   }
 }
+@media (max-width: 430px) {
+  div#root div.app main div.address-data div.data {
+    width: 95%;
+  }
+  div#root div.app main div.address-data div.data i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  div#root div.app main div.address-data div.data input {
+    padding-left: 5px;
+    font-size: 17px;
+    height: 40px;
+  }
+}
+div#root div.app main div.address-data div.data button.showlm {
+  background: #5d5dff;
+  border: 1px solid #000;
+  color: #fff;
+  padding: 0 5px;
+  width: 60px;
+  height: 62px;
+}
+div#root div.app main div.address-data div.data button.showlm:not(.active):hover {
+  cursor: pointer;
+  background: #3939ec;
+}
+div#root div.app main div.address-data div.data button.showlm.active {
+  background: #1f1f6d;
+}
+@media (max-width: 680px) {
+  div#root div.app main div.address-data div.data button.showlm {
+    height: 52px;
+  }
+}
+@media (max-width: 430px) {
+  div#root div.app main div.address-data div.data button.showlm {
+    height: 42px;
+  }
+}
+div#root div.app main div.address-data div.data button.showlm span {
+  font-size: 16px;
+  display: block;
+  transition: 0.3s ease-out transform;
+}
+div#root div.app main div.address-data div.data button.showlm span.active {
+  transform: rotate(180deg);
+  font-size: 16px;
+}
+div#root div.app main div.address-data div.data button.disabled {
+  background: #b1b1b1;
+  border: 1px solid #000;
+  color: #fff;
+  padding: 0 5px;
+  width: 60px;
+  height: 62px;
+}
+div#root div.app main div.address-data div.data button.disabled.active {
+  background: #1f1f6d;
+}
+@media (max-width: 680px) {
+  div#root div.app main div.address-data div.data button.disabled {
+    height: 52px;
+  }
+}
+@media (max-width: 430px) {
+  div#root div.app main div.address-data div.data button.disabled {
+    height: 42px;
+  }
+}
+div#root div.app main div.address-data div.data button.disabled span {
+  font-size: 16px;
+  display: block;
+  transition: 0.3s ease-out transform;
+}
+div#root div.app main div.address-data div.data button.disabled span.active {
+  transform: rotate(180deg);
+  font-size: 16px;
+}
+div#root div.app main div.address-data div.data div.full-data {
+  border: 1px solid #000;
+  font-size: 26px;
+  position: absolute;
+  color: #000;
+  font-weight: 900;
+  background: #fff;
+  word-break: keep-all;
+  transition: border 0.3s ease-out, height 0.3s ease-out;
+}
+div#root div.app main div.address-data div.data div.full-data.active {
+  display: flex;
+  height: 60px;
+  border: 1px solid #000;
+  font-size: 19px;
+  animation: show 0.3s ease-out;
+}
+@media (max-width: 680px) {
+  div#root div.app main div.address-data div.data div.full-data.active {
+    font-size: 15px;
+    height: 50px;
+  }
+}
+@media (max-width: 430px) {
+  div#root div.app main div.address-data div.data div.full-data.active {
+    font-size: 15px;
+    height: 40px;
+  }
+}
+@keyframes show {
+  0% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+    font-weight: 900;
+  }
+}
+div#root div.app main div.address-data div.data div.full-data.active i.full-data-item {
+  border: none;
+  border-right: 1px solid #000;
+  display: inline-block;
+  color: #000;
+  animation: show 0.3s ease-out;
+}
+@keyframes show {
+  0% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}
+@media (max-width: 680px) {
+  div#root div.app main div.address-data div.data div.full-data.active i.full-data-item {
+    width: 38px;
+  }
+}
+div#root div.app main div.address-data div.data div.full-data.active span.full-data-item {
+  width: auto;
+  height: 100%;
+  display: inline-block;
+  padding-left: 5px;
+  word-break: break-all;
+}
+div#root div.app main div.address-data div.data div.full-data.disabled {
+  height: 0px;
+  border: none;
+  border-top: 1px solid #000;
+  color: transparent;
+  animation: hide 0.3s ease-out;
+}
+@keyframes hide {
+  0% {
+    border: 1px solid #000;
+  }
+  99% {
+    border: 1px solid #000;
+  }
+  100% {
+    border: none;
+    color: transparent;
+    border-top: 1px solid #000;
+  }
+}
+div#root div.app main div.address-data div.data div.full-data.disabled i.full-data-item {
+  display: none;
+  animation: hide 0.3s ease-out;
+}
+@keyframes hide {
+  0% {
+    border: 1px solid #000;
+  }
+  99% {
+    border: 1px solid #000;
+  }
+  100% {
+    border: none;
+    color: transparent;
+    border-top: 1px solid #000;
+  }
+}
+div#root div.app main div.address-data div.data div.full-data.disabled span.full-data-item {
+  display: none;
+}
 div#root div.app main div.address-data div.modal {
+  width: 60%;
   margin-top: 20px;
   color: #fff;
-  padding: 10px;
   font-size: 18px;
 }
-div#root div.app main div.address-data div.error-message {
+div#root div.app main div.address-data div.modal p {
+  margin: 10px;
+}
+@media (max-width: 680px) {
+  div#root div.app main div.address-data div.modal {
+    width: 80%;
+  }
+}
+@media (max-width: 430px) {
+  div#root div.app main div.address-data div.modal {
+    width: 95%;
+    font-size: 15px;
+  }
+}
+div#root div.app main div.address-data div.error {
   background: rgba(253, 108, 108, 0.7);
 }
-div#root div.app main div.address-data div.no-value-message {
+div#root div.app main div.address-data div.no-value {
   background: rgba(73, 73, 190, 0.7);
 }
 

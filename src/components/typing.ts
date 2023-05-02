@@ -21,9 +21,10 @@ interface CepDataType {
     ddd : string,
     erro: boolean
     loading : boolean
+    noValue : boolean
 }
 
 type AddressDataType = (props : { result : CepDataType }) => ReactElement
-
-
-export type { Component, HandleType, HandleClick, CepDataType, AddressDataType }
+type HandleBtnClickType = ( event : React.MouseEvent<HTMLButtonElement>) => void
+type DataComponent = (props : { props : {dados : string[], noValue : boolean, error : boolean, loading : boolean}}) => ReactElement
+export type { Component, HandleType, HandleClick, CepDataType, AddressDataType, HandleBtnClickType, DataComponent }

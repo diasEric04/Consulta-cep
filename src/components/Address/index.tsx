@@ -20,7 +20,7 @@ export const Address : Component = () => {
         )
     } else if (!loading) {
         return (
-            <AddressData result={{} as CepDataType} /> //invalido e inicial
+            <AddressData result={{noValue : true} as CepDataType} /> //invalido e inicial
         )
     }
 

@@ -22,15 +22,26 @@ export default function App () : ReactElement {
 
     const handleHamburguer : HandleHamburguerType = () => {
         if (hamburguerRef.current) {
-            $(hamburguerRef.current).find('div').each( function () {
-                $(this).toggleClass('active')
-            })
+            $(hamburguerRef.current).find('div').toggleClass('active')
         }
 
         if (navRef.current) {
             $(navRef.current).toggleClass('active')
         }
     }
+
+    $(window).on('resize', function () {
+        if (this.innerWidth > 860 ) {
+            if (navRef.current) {
+                $(navRef.current).removeClass('active')
+            }
+
+            if (hamburguerRef.current) {
+                $(hamburguerRef.current).find('div').toggleClass('active')
+            }
+        }
+    })
+
     return(
         <div className="app">
             <header>
