@@ -7,13 +7,7 @@ import { useState, useRef, useEffect} from 'react'
 import $ from 'jquery'
 
 export const Data : DataComponent = ({props : { dados : [index, valor], error, noValue, loading}}) => { 
-    const setIcon = () => {
-        return loading ? faRotate : valor ? faCheck : error ? faXmark : faInfo 
-    }
     
-    const setClassName = () => {
-        return loading ? 'loading' : valor ? 'success' : error ? 'error' : 'no-value' 
-    }
     
     const windowWidthRef = useRef<number | undefined>(0)
     const windowRef = useRef<Window>(window)
@@ -25,7 +19,6 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
         $(event.target).closest('button').toggleClass('active')
 
         $(event.target).closest('button').find('span').toggleClass('active')
-
         const text = $(event.target).closest('button').find('p').html() === 'show' ? 'hide' : 'show'
         $(event.target).closest('button').find('p').html(text)
 
@@ -40,6 +33,14 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
         }
     }
 
+    const setIcon = () => {
+        return loading ? faRotate : valor ? faCheck : error ? faXmark : faInfo 
+    }
+    
+    const setClassName = () => {
+        return loading ? 'loading' : valor ? 'success' : error ? 'error' : 'no-value' 
+    }
+
     const setInputNumCharFn = () => {
         const pixeisPorLetra = windowWidthRef.current && windowWidthRef.current > 680 ? 15 : windowWidthRef.current && windowWidthRef.current > 430 ? 12 : 10
         const widthInput = $('div.data:first').find('input').innerWidth() ?? 0
@@ -47,48 +48,54 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
         setInputNumChar(inputMaxChar)
     }
 
-    const setFakeIfn = () => {
+    const setWidthIFD = () => {
         const widthI = $('div.data:first i:first').innerWidth() ?? 0
         $('i.full-data-item').css('width', widthI)
     }
 
-    const setFakeSpanfn = () => {
+    const setWidthSpanFD = () => {
         const widthInput = $('div.data:first').find('input').innerWidth() ?? 0
-        $('span.full-data-item').css('width', widthInput -100)
+        $('span.full-data-item').css('width', widthInput)
+    }
+
+    const setWidthDivFD = () => {
+        const widthDiv = $('div.data:first').innerWidth() ?? 0
+        const widthButton = $('div.data:first').find('button').innerWidth() ?? 0
+        const width  = widthDiv - widthButton - 4
+        $('div.full-data').css('width', `${width}px`)
+    }
+
+    const controlActiveClassName = () => {
+        $('div.full-data').each(function () {
+            if ($(this).has('active')) {
+                $('div.full-data').removeClass('active')
+                $('div.full-data').addClass('disabled')
+            }
+        })
+        $('nav').removeClass('active')
+        $('.hamburguer').find('div').removeClass('active')
+        $('button.showlm').removeClass('active')
+        $('div.data button').find('span').removeClass('active')
+        $('div.data button').find('p').html('show')
     }
 
     useEffect( () => {
         setInputNumCharFn()
-        setFakeIfn()
-        setFakeSpanfn()
+        setWidthIFD()
+        setWidthSpanFD()
     }, [])
 
     useEffect( () => {
         $(windowRef.current).on('resize', function () {
             setWindowWidht($(window).innerWidth())
-    
-            const widthDiv = $('div.data:first').innerWidth() ?? 0
-            const widthButton = $('div.data:first').find('button').innerWidth() ?? 0
-            const width  = widthDiv - widthButton - 4
-            $('div.full-data').css('width', `${width}px`)
-        
-            $('div.full-data').each(function () {
-                if ($(this).has('active')) {
-                    $('div.full-data').removeClass('active')
-                    $('div.full-data').addClass('disabled')
-                }
-            })
-
-            setFakeIfn()
-            setFakeSpanfn()
+            setWidthDivFD()
+            controlActiveClassName()
+            setWidthIFD()
+            setWidthSpanFD()
             setInputNumCharFn()
-
-            $('nav').removeClass('active')
-            $('.hamburguer').find('div').removeClass('active')
-
             return () => {
                 $(windowRef.current).off()
-            }     
+            }  
         })
     }, [windowRef])
 
@@ -106,6 +113,10 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
     }
 
     const valueFirstUC = index[0].toUpperCase()+index.substring(1)
+    const valueWithPrefix = `${index}: ${valor}`
+
+    const finalValue = valor ? (valueWithPrefix) : (valueFirstUC)
+
     const success = !loading && !noValue && !error
     return( 
         <>
@@ -114,8 +125,8 @@ export const Data : DataComponent = ({props : { dados : [index, valor], error, n
                 <i className={setClassName()}>
                     <span><FontAwesomeIcon icon={setIcon()} /></span>
                 </i>
-                <input className={!valor ? 'input-default' : ''} type="text" disabled value={setValue(valor ? `${index}: ${valor}` : valueFirstUC)}/>
-                {insertButton(valor ? `${index}: ${valor}` : valueFirstUC) ? (
+                <input className={!valor ? 'input-default' : ''} type="text" disabled value={setValue(finalValue)}/>
+                {insertButton(finalValue) ? (
                     <button className="showlm" onClick={handleBtnClick}>
                         <p>show</p>
                         <span><FontAwesomeIcon icon={faSquareCaretUp} /></span>

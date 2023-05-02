@@ -82,9 +82,9 @@ div#root div.app header nav ul li.active {
     height: 92vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-    animation: hide 0.35s ease-out;
+    animation: hideFade 0.31s ease-out;
   }
-  @keyframes hide {
+  @keyframes hideFade {
     0% {
       opacity: 0;
     }
@@ -107,10 +107,10 @@ div#root div.app header nav ul li.active {
   div#root div.app header nav ul li a {
     font-size: 20px;
   }
-  div#root div.app header nav.active {
-    opacity: 1;
-    transform: translate(0);
-  }
+}
+div#root div.app header nav.active {
+  opacity: 1;
+  transform: translate(0);
 }
 @media (max-width: 680px) {
   div#root div.app header nav {
@@ -279,6 +279,7 @@ div#root div.app main div.address-data div.data button.showlm:not(.active):hover
   background: #3939ec;
 }
 div#root div.app main div.address-data div.data button.showlm.active {
+  cursor: pointer;
   background: #1f1f6d;
 }
 @media (max-width: 680px) {
@@ -309,6 +310,7 @@ div#root div.app main div.address-data div.data button.disabled {
   height: 62px;
 }
 div#root div.app main div.address-data div.data button.disabled.active {
+  cursor: pointer;
   background: #1f1f6d;
 }
 @media (max-width: 680px) {

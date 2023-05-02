@@ -87,9 +87,9 @@ div#root {
                         height: 92vh;
                         transform: translateX(-100%);
                         transition: transform .3s ease-out, opacity .3s ease-out;
-                        animation: hide .35s ease-out;
+                        animation: hideFade .31s ease-out;
 
-                        @keyframes hide {
+                        @keyframes hideFade {
                             0% {
                                 opacity: 0;
                             }
@@ -116,13 +116,11 @@ div#root {
                             }
                         }
                     }
-
-                    &.active {
-                        opacity: 1;
-                        transform: translate(0);
-                    }
                 }
-
+                &.active {
+                    opacity: 1;
+                    transform: translate(0);
+                }
                 @media (max-width: 680px) {
                     & {
                         transition: .5s ease-out;
@@ -318,6 +316,7 @@ div#root {
                             }
                         }
                         &.active {
+                            cursor: pointer;
                             background: #1f1f6d;
                         }
 
