@@ -18,7 +18,7 @@ Alguns comandos usados no terminal integrado (git bash) do VSCODE ***referentes 
    `eval "$(ssh-agent -s)"` - *é usado para iniciar o agente SSH no Git Bash. O agente SSH é um programa que executa em segundo plano e armazena as chaves privadas necessárias para autenticação em um servidor remoto.*  
    `ssh-add (caminha da ssh no sistema)` - *adiciona a conexão uma ssh criada anteriormente no meu sistema, que ja está linkada no meu github*  
    `git add .` - *adiciona TODAS (.) as mudanças no indice de mudança do git*  
-   `git commit -m "titulo do commit"` - *confirma as mudanças anteriormente setadas no: *`git commit -m "titulo do commit"`  
+   `git commit -m "titulo do commit"` - *confirma as mudanças anteriormente setadas no:* `git commit -m "titulo do commit"`  
    `git push origin (branch, geralmente é utilizada a "master")` - *envia ao github todas as alterações feitas, salvas e commitadas anteiormente*    
 ***lembrando que:*** **todas as vezes que abria meu VSCODE ou fechava o terminal integrado, eu tinha que efetuar os DOIS primeiros codigos (que são codigos apenas para conexão do git bash com o github), e os outros TRÊS são para salvar e enviar as alterações feitas**  
   
