@@ -13,9 +13,9 @@ Alguns comandos usados no terminal integrado (git bash) do VSCODE:
     `npm start` - *starta no navegador o projeto para testes*  
     `sass --watch sass:css` - *indica que o sass deve 'asistir' a pasta sass, e qualquer alteração nela ele deve passar todos os arquivos .sass ou .scss contidos nela para a pasta css com o formato de arquivo .css que o navedor pode interpretar.*  
 
-## -**Video de demonstração**:    
+## -**Video de demonstração**:
 ### *https://www.youtube.com/watch?v=fI26UBo21Ow*
-## -**Deploy da aplicação**:    
+## -**Deploy da aplicação**:
 ### *PENDENTE*
 <<<<<<< END
 
