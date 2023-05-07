@@ -24,5 +24,5 @@ Alguns comandos usados no terminal integrado (git bash) do VSCODE ***referentes 
 ***--lembrando que:*** **todas as vezes que abria meu VSCODE ou fechava o terminal integrado, eu tinha que efetuar os DOIS primeiros codigos (que são codigos apenas para conexão do git bash com o github), e os outros TRÊS são para salvar e enviar as alterações feitas**  
   
 ## -**Video de demonstração**: [***https://www.youtube.com/watch?v=fI26UBo21Ow***]
-## -**Deploy da aplicação**: [***PENDENTE***]
+## -**Deploy da aplicação**: [***http://consulta-cep-diaseric04.epizy.com***]
 <<<<<<< END
